@@ -1,4 +1,4 @@
-package restful
+package main
 
 import (
 	"fmt"
