@@ -40,6 +40,20 @@ func resourceRestCall() *schema.Resource {
 				Type:     schema.TypeInt,
 				Optional: true,
 			},
+			"json_key_outputs": &schema.Schema{
+				Type:     schema.TypeList,
+				Optional: true,
+				Elem: &schema.Schema{
+				  Type: schema.TypeString,
+				},
+			},
+			"outputs": &schema.Schema{
+				Type:     schema.TypeList,
+				Computed: true,
+				Elem: &schema.Schema{
+				  Type: schema.TypeString,
+				},
+			},
 		},
 	}
 }
@@ -56,6 +70,8 @@ func resourceRestCallCreate(d *schema.ResourceData, m interface{}) error {
 	}
 
 	err = resChecker(resBody, []byte(d.Get("expected_response_body").(string)), resCode, d.Get("expected_response_code").(int))
+
+	err = setOutputs(d, resBody, (d.Get("json_key_outputs").([]interface{})))
 
 	return err
 }
