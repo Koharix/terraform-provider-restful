@@ -11,6 +11,7 @@ import (
 	"errors"
 	"strings"
 	"log"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 )
 
 func restCall(method string, uri string, headers []interface{},  reqBody []byte) ([]byte, int, error) {
@@ -150,4 +151,18 @@ func parseJson(jsonBytes []byte) (map[string]interface{}, []interface{}, error) 
 		return nil, jsonSlice, nil
 	}
 	return jsonMap, nil, nil
+}
+
+func setOutputs(d *schema.ResourceData, resBody []byte, jsonOutputs []interface{}) error {
+	log.Println("function setOutputs() started")
+	var s []string
+	for _, json := range jsonOutputs {
+		resMap, _, err := parseJson(resBody)
+		if err != nil {
+			return err
+		}
+		s = append(s, resMap[json.(string)].(string))
+	}
+	d.Set("outputs", s)
+	return nil
 }
