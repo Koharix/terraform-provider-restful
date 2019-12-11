@@ -16,7 +16,7 @@ import (
 
 func restCall(method string, uri string, headers []interface{},  reqBody []byte) ([]byte, int, error) {
 	
-	timeout := time.Duration(5 * time.Second)
+	timeout := time.Duration(15 * time.Second)
 	client := http.Client{
 		Timeout: timeout,
 	}
