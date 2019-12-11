@@ -32,4 +32,10 @@ variable "expected_response_body" {
     default = null
 }
 
+variable "json_key_outputs" {
+    description = "List of json keys that you want the value of it stored as an output."
+    type = list(string)
+    default = null
+}
+
 

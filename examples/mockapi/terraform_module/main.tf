@@ -2,10 +2,10 @@ module "get_request" {
   source = "./modules/restful"
 
   method = "GET"
-  uri = "http://localhost:8080/events"
+  uri = "http://localhost:8080/events/1"
   expected_response_code = 200
-  expected_response_body = "[{\"ID\":\"1\",\"Title\":\"Introduction to Golang\",\"Description\":\"Come join us for a chance to learn how golang works and get to eventually try it out\"}]"
-
+  expected_response_body = "{\"ID\":\"1\",\"Title\":\"Introduction to Golang\",\"Description\":\"Come join us for a chance to learn how golang works and get to eventually try it out\"}"
+  json_key_outputs = ["Title", "Description"]
 }
 
 module "post_request" {
