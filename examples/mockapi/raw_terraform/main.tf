@@ -5,7 +5,7 @@ resource "restful_rest_call" "GET1" {
   method = "GET"
   uri = "http://localhost:8080/events/1"
   expected_response_code = 200
-  expected_response_body = "[{\"ID\":\"1\",\"Title\":\"Introduction to Golang\",\"Description\":\"Come join us for a chance to learn how golang works and get to eventually try it out\"}]"
+  expected_response_body = "{\"ID\":\"1\",\"Title\":\"Introduction to Golang\",\"Description\":\"Come join us for a chance to learn how golang works and get to eventually try it out\"}"
   json_key_outputs = ["Title", "Description"]
 }
 //GET expected_response_body is in the response body but response body contains more data
