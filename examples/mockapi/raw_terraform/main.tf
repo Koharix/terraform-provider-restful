@@ -16,6 +16,12 @@ resource "restful_rest_call" "GET2" {
 }
 //GET a specific item
 
+resource "restful_rest_call" "DELETE1" {
+  method = "DELETE"
+  uri = "http://localhost:8080/events/2"
+  expected_response_code = 200
+  depends_on = [restful_rest_call.GET3]
+}
 resource "restful_rest_call" "POST1" {
   method = "POST"
   uri = "http://localhost:8080/event"
@@ -38,12 +44,6 @@ resource "restful_rest_call" "GET3" {
   expected_response_code = 200
   expected_response_body = "{\"ID\":\"2\",\"Title\":\"title\",\"Description\":\"desc3\"}"
   depends_on = [restful_rest_call.PATCH1]
-}
-resource "restful_rest_call" "DELETE1" {
-  method = "DELETE"
-  uri = "http://localhost:8080/events/2"
-  expected_response_code = 200
-  depends_on = [restful_rest_call.GET3]
 }
 
 
