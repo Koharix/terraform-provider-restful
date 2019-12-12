@@ -7,7 +7,7 @@ The Restful Provider supports Terraform 0.12.x and later.
 
 ## Usage Example
 ```
-# No configuration is requierd for the proivder
+# No configuration is required for the proivder
 provider "restful" {}
 
 # GET request that returns object information
@@ -52,12 +52,12 @@ resource "restful_rest_call" "delete_object" {
 No configuration is used by the provider block.
 
 ## `rest_call` resource configuration
-- `id` (string, computed): The id is set equal to the inputed uri.
+- `id` (string, computed): The id is set equal to the inputted uri.
 - `method` (string, required): The HTTP method being applied to the call.
 - `uri` (string, required): The endpoint to hit by the REST call.
 - `headers` (list(string), optional): List of headers applied to the call.
 - `request_body` (string, optional): The body of the call, required to be valid json.
-- `expected_response_body` (string, optional): Validates if the inputed json here is "in" the json of the response body
+- `expected_response_body` (string, optional): Validates if the inputted json here is "in" the json of the response body
 - `expected_response_code` (number, optional): Validates that the if the response code is equal to this value.
 - `json_key_outputs` (list(string), optional): List of json keys that you want as an output variable by the resource
 - `outputs` (list(string),  computed): List of the values to the keys in the response body specified in the json_key_outputs input.
