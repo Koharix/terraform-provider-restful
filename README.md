@@ -52,7 +52,7 @@ resource "restful_rest_call" "delete_object" {
 No configuration is used by the provider block.
 
 ## `rest_call` resource configuration
-- `id` (string, computed):
+- `id` (string, computed): The id is set equal to the inputed uri.
 - `method` (string, required): The HTTP method being applied to the call.
 - `uri` (string, required): The endpoint to hit by the REST call.
 - `headers` (list(string), optional): List of headers applied to the call.
