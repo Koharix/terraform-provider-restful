@@ -70,7 +70,10 @@ func resourceRestCallCreate(d *schema.ResourceData, m interface{}) error {
 	}
 
 	err = resChecker(resBody, []byte(d.Get("expected_response_body").(string)), resCode, d.Get("expected_response_code").(int))
-
+	if err != nil {
+		return err
+	}
+	
 	if d.Get("json_key_outputs") != nil {
 		err = setOutputs(d, resBody, (d.Get("json_key_outputs").([]interface{})))
 	}

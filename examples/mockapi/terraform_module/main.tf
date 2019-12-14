@@ -4,7 +4,7 @@ module "get_request" {
   method = "GET"
   uri = "http://localhost:8080/events/1"
   expected_response_code = 200
-  expected_response_body = "{\"ID\":\"1\",\"Title\":\"Introduction to Golang\",\"Description\":\"Come join us for a chance to learn how golang works and get to eventually try it out\"}"
+  expected_response_body = "{\"ID\":\"1\",\"Title\":\"The title\",\"Description\":\"A short description\"}"
   json_key_outputs = ["Title", "Description"]
 }
 
@@ -14,7 +14,7 @@ module "post_request" {
   method = "POST"
   uri = "http://localhost:8080/event"
   headers = ["Content-Type:application/json"]
-  request_body = "{\"ID\":\"2\",\"Title\":\"title\",\"Description\":\"desc2\"}"
-  expected_response_body = "{\"ID\":\"2\",\"Title\":\"title\",\"Description\":\"desc2\"}"
+  request_body = "{\"ID\":\"2\",\"Title\":\"title\",\"Description\":\"A description for title 2\"}"
+  expected_response_body = "{\"ID\":\"2\",\"Title\":\"title\",\"Description\":\"A description for title 2\"}"
   expected_response_code = 201
 }
